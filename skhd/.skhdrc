@@ -1,0 +1,45 @@
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+alt - s : yabai -m display --focus west
+alt - g : yabai -m display --focus east
+
+shift + alt - r : yabai -m space --rotate 270
+shift + alt - y : yabai -m space --mirror y-axis
+shift + alt - x : yabai -m space --mirror x-axis
+shift + alt - s : yabai -m window --toggle split
+
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west
+shift + alt - l : yabai -m window --swap east
+
+cmd + alt - j : yabai -m window --warp south
+cmd + alt - k : yabai -m window --warp north
+cmd + alt - h : yabai -m window --warp west
+cmd + alt - l : yabai -m window --warp east
+
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+shift + alt - e : yabai -m space --balance
+
+shift + alt - p : yabai -m space --focus prev
+shift + alt - n : yabai -m space --focus next
+
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+shift + alt - 8 : yabai -m window --space 8
+shift + alt - 9 : yabai -m window --space 9
+shift + alt - 0 : yabai -m window --space 0
+
+cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
+cmd + shift - e : open -na "Microsoft Edge"
+cmd + shift - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
+cmd + shift - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
+cmd + shift - c : code -n
