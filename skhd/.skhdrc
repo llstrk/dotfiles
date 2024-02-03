@@ -38,8 +38,30 @@ shift + alt - 8 : yabai -m window --space 8
 shift + alt - 9 : yabai -m window --space 9
 shift + alt - 0 : yabai -m window --space 0
 
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+ctrl - 6 : yabai -m space --focus 6
+ctrl - 7 : yabai -m space --focus 7
+ctrl - 8 : yabai -m space --focus 8
+ctrl - 9 : yabai -m space --focus 9
+ctrl - 0 : yabai -m space --focus 0
+
+ctrl + alt + shift - t : osascript -e 'activate application "iTerm2"'
+ctrl + alt + shift - e : osascript -e 'activate application "Microsoft Edge"'
+ctrl + alt + shift - c : osascript -e 'activate application "Code"'
+ctrl + alt + shift - g : osascript -e 'activate application "ChatGPT"'
+ctrl + alt + shift - d : osascript -e 'activate application "Discord"'
+
 cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
+cmd + shift + ctrl + alt - t : osascript -e 'tell application "iTerm2" to create window with default profile'
 cmd + shift - e : open -na "Microsoft Edge"
+cmd + shift + ctrl + alt - e : open -na "Microsoft Edge"
 cmd + shift - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
+cmd + shift + ctrl + alt - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
 cmd + shift - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
+cmd + shift + ctrl + alt - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
 cmd + shift - c : code -n
+cmd + shift + ctrl + alt - c : code -n
