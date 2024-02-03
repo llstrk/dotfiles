@@ -25,6 +25,8 @@ vim.keymap.set("i", "jk", "<ESC>")
 
 vim.keymap.set("n", "<leader>gm", "<cmd>LazyGit<CR>")
 
+vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR>")
+
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
