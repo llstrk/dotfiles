@@ -2,4 +2,4 @@ Dependencies:
  - gcc / clang
  - make
  - ripgrep
- - tmux.sh script
+ - utility added to path
