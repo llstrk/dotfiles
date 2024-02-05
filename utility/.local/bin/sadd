@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh-add $(ls $HOME/.ssh/key_* | fzf | awk '{print $1}')
