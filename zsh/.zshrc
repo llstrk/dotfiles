@@ -87,8 +87,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 alias vim="nvim"
 
-eval $(ssh-agent) > /dev/null
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
