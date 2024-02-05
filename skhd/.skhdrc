@@ -54,6 +54,7 @@ ctrl + alt + shift - e : osascript -e 'activate application "Microsoft Edge"'
 ctrl + alt + shift - c : osascript -e 'activate application "Code"'
 ctrl + alt + shift - g : osascript -e 'activate application "ChatGPT"'
 ctrl + alt + shift - d : osascript -e 'activate application "Discord"'
+ctrl + alt + shift - u : osascript -e 'activate application "UTM"'
 
 cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
 cmd + shift + ctrl + alt - t : osascript -e 'tell application "iTerm2" to create window with default profile'
