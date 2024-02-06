@@ -85,6 +85,8 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.local/bin:$PATH"
 
+pgrep ssh-agent > /dev/null || eval $(ssh-agent) > /dev/null
+
 alias vim="nvim"
 
 # export MANPATH="/usr/local/man:$MANPATH"
