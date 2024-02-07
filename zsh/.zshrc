@@ -7,7 +7,6 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -77,17 +76,25 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins+=(git)
+plugins+=(zsh-syntax-highlighting)
+plugins+=(zsh-autosuggestions)
+plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH="$HOME/.local/bin:$PATH"
+export ZVM_VI_EDITOR="nvim"
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+bindkey -M viins '^ ' autosuggest-accept
 
 pgrep ssh-agent > /dev/null || eval $(ssh-agent) > /dev/null
 
 alias vim="nvim"
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
