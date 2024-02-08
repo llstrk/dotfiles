@@ -59,7 +59,7 @@ ctrl + alt + shift - u : osascript -e 'activate application "UTM"'
 cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
 cmd + shift + ctrl + alt - t : osascript -e 'tell application "iTerm2" to create window with default profile'
 cmd + shift - e : open -na "Microsoft Edge"
-cmd + shift + ctrl + alt - e : open -na "Microsoft Edge"
+cmd + shift + ctrl + alt - e : open -na "Microsoft Edge" --args --profile-directory="Default"
 cmd + shift - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
 cmd + shift + ctrl + alt - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
 cmd + shift - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
