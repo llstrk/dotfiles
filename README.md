@@ -4,7 +4,6 @@ Dependencies:
  - ripgrep
  - fzf
  - lazygit
- - utility added to path
  - oh-my-zsh
    - powerline10k
    - zsh-syntax-highlighting
