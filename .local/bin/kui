@@ -1,3 +1,9 @@
 #!/bin/bash
 
-kill -9 $(ps ax | fzf | awk '{print $1}')
+stop=0
+
+while [[ $stop -eq 0 ]]; do
+    output=$(ps ax | fzf | awk '{print $1}')
+    [ -z $output ] && stop=1
+    [ -z $output ] || kill -9 $output 
+done
