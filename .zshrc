@@ -80,6 +80,8 @@ plugins+=(git)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(zsh-autosuggestions)
 plugins+=(zsh-vi-mode)
+plugins+=(pass)
+plugins+=(azure)
 
 source $ZSH/oh-my-zsh.sh
 
