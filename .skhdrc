@@ -1,68 +1,22 @@
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
-
-alt - s : yabai -m display --focus west
-alt - g : yabai -m display --focus east
-
-shift + alt - r : yabai -m space --rotate 270
-shift + alt - y : yabai -m space --mirror y-axis
-shift + alt - x : yabai -m space --mirror x-axis
-shift + alt - s : yabai -m window --toggle split
-
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
-
-cmd + alt - j : yabai -m window --warp south
-cmd + alt - k : yabai -m window --warp north
-cmd + alt - h : yabai -m window --warp west
-cmd + alt - l : yabai -m window --warp east
-
-shift + alt - m : yabai -m window --toggle zoom-fullscreen
-shift + alt - e : yabai -m space --balance
-
-shift + alt - p : yabai -m space --focus prev
-shift + alt - n : yabai -m space --focus next
-
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
-shift + alt - 7 : yabai -m window --space 7
-shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
-shift + alt - 0 : yabai -m window --space 0
-
-ctrl - 1 : yabai -m space --focus 1
-ctrl - 2 : yabai -m space --focus 2
-ctrl - 3 : yabai -m space --focus 3
-ctrl - 4 : yabai -m space --focus 4
-ctrl - 5 : yabai -m space --focus 5
-ctrl - 6 : yabai -m space --focus 6
-ctrl - 7 : yabai -m space --focus 7
-ctrl - 8 : yabai -m space --focus 8
-ctrl - 9 : yabai -m space --focus 9
-ctrl - 0 : yabai -m space --focus 0
-
-ctrl + alt + shift - t : osascript -e 'activate application "iTerm2"'
-ctrl + alt + shift - e : osascript -e 'activate application "Microsoft Edge"'
-ctrl + alt + shift - c : osascript -e 'activate application "Code"'
-ctrl + alt + shift - g : osascript -e 'activate application "ChatGPT"'
-ctrl + alt + shift - d : osascript -e 'activate application "Discord"'
-ctrl + alt + shift - u : osascript -e 'activate application "UTM"'
-
-cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
-cmd + shift + ctrl + alt - t : osascript -e 'tell application "iTerm2" to create window with default profile'
-cmd + shift - e : open -na "Microsoft Edge"
-cmd + shift + ctrl + alt - e : open -na "Microsoft Edge" --args --profile-directory="Default"
-cmd + shift - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
-cmd + shift + ctrl + alt - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
-cmd + shift - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
-cmd + shift + ctrl + alt - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
-cmd + shift - c : code -n
-cmd + shift + ctrl + alt - c : code -n
+#ctrl + alt + shift - t : osascript -e 'activate application "iTerm2"'
+#ctrl + alt + shift - e : osascript -e 'activate application "Microsoft Edge"'
+#ctrl + alt + shift - c : osascript -e 'activate application "Code"'
+#ctrl + alt + shift - g : osascript -e 'activate application "ChatGPT"'
+#ctrl + alt + shift - d : osascript -e 'activate application "Discord"'
+#ctrl + alt + shift - u : osascript -e 'activate application "UTM"'
+#
+#cmd + shift - t : osascript -e 'tell application "iTerm2" to create window with default profile'
+#cmd + shift + ctrl + alt - t : osascript -e 'tell application "iTerm2" to create window with default profile'
+#cmd + shift - e : open -na "Microsoft Edge"
+#cmd + shift + ctrl + alt - e : open -na "Microsoft Edge" --args --profile-directory="Default"
+#cmd + shift - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
+#cmd + shift + ctrl + alt - d : open -na "Microsoft Edge" --args --profile-directory="Profile 1"
+#cmd + shift - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
+#cmd + shift + ctrl + alt - a : open -na "Microsoft Edge" --args --profile-directory="Profile 5"
+#cmd + shift - c : code -n
+#cmd + shift + ctrl + alt - c : code -n
+#
+#cmd + shift + ctrl + alt - h : skhd -k "cmd + alt - d"
+#cmd + ctrl - j : skhd -k "cmd + shift + ctrl + alt - j"
+#cmd + ctrl - k : skhd -k "cmd + shift + ctrl + alt - k"
+#cmd + ctrl - l : skhd -k "cmd + shift + ctrl + alt - l"

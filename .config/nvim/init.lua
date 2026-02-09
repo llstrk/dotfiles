@@ -13,12 +13,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
+vim.keymap.set("v", "<leader>y", '"+y')
 
-vim.keymap.set("n", "<leader>f", function ()
-   vim.lsp.buf.format()
+vim.keymap.set("n", "<leader>f", function()
+	vim.lsp.buf.format()
 end)
 
 vim.keymap.set("i", "jk", "<ESC>")
@@ -81,16 +81,15 @@ vim.opt.updatetime = 50
 -- bootstrap and setup lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-

@@ -82,8 +82,10 @@ plugins+=(zsh-autosuggestions)
 plugins+=(zsh-vi-mode)
 plugins+=(pass)
 plugins+=(azure)
+plugins+=(direnv)
 
 source $ZSH/oh-my-zsh.sh
+source <(fzf --zsh)
 
 # User configuration
 
@@ -124,3 +126,6 @@ alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# opencode
+export PATH=/Users/dennisrye/.opencode/bin:$PATH
