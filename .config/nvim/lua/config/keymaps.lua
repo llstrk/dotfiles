@@ -11,8 +11,6 @@ vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 vim.keymap.set("v", "<leader>y", '"+y')
 
-vim.keymap.set("n", "<BS>", "<C-w>h")
-
 -- Disable LazyVim Copilot plugin autocomplete
 -- vim.g.copilot_no_tab_map = true
 -- vim.keymap.set("i", "<S-Tab>", 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
