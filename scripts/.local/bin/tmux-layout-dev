@@ -8,6 +8,7 @@ if [[ -z "${TMUX:-}" ]]; then
 fi
 
 source_pane="${TMUX_PANE:-}"
+source_window_id="$(tmux display-message -p -t "${source_pane:-.}" '#{window_id}')"
 current_path="$(tmux display-message -p -t "${source_pane:-.}" '#{pane_current_path}')"
 current_dir="${current_path%/}"
 if [[ -z "$current_dir" ]]; then
@@ -22,8 +23,8 @@ window_name="${1:-$default_window_name}"
 new_window_id="$(tmux new-window -P -F '#{window_id}' -n "$window_name" -c "$current_path")"
 main_pane="$(tmux display-message -p -t "$new_window_id" '#{pane_id}')"
 
-tmux split-window -v -p 15 -t "$main_pane" -c "$current_path" >/dev/null
 right_pane="$(tmux split-window -h -p 30 -t "$main_pane" -c "$current_path" -P -F '#{pane_id}')"
+tmux split-window -v -p 15 -t "$main_pane" -c "$current_path" >/dev/null
 
 tmux respawn-pane -k -t "$main_pane" 'nvim; exec "${SHELL:-/bin/zsh}" -l'
 if command -v ocd >/dev/null 2>&1; then
@@ -34,3 +35,7 @@ else
   tmux respawn-pane -k -t "$right_pane" 'exec "${SHELL:-/bin/zsh}" -l'
 fi
 tmux select-pane -t "$right_pane"
+tmux select-window -t "$new_window_id"
+if [[ "$source_window_id" != "$new_window_id" ]]; then
+  tmux kill-window -t "$source_window_id"
+fi
