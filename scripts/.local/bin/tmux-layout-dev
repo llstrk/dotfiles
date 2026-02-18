@@ -23,7 +23,7 @@ window_name="${1:-$default_window_name}"
 new_window_id="$(tmux new-window -P -F '#{window_id}' -n "$window_name" -c "$current_path")"
 main_pane="$(tmux display-message -p -t "$new_window_id" '#{pane_id}')"
 
-right_pane="$(tmux split-window -h -p 30 -t "$main_pane" -c "$current_path" -P -F '#{pane_id}')"
+right_pane="$(tmux split-window -h -p 41 -t "$main_pane" -c "$current_path" -P -F '#{pane_id}')"
 tmux split-window -v -p 15 -t "$main_pane" -c "$current_path" >/dev/null
 
 tmux respawn-pane -k -t "$main_pane" 'nvim; exec "${SHELL:-/bin/zsh}" -l'
