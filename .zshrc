@@ -10,6 +10,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -79,13 +81,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins+=(git)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(zsh-autosuggestions)
-plugins+=(zsh-vi-mode)
+plugins+=(fzf)
+#plugins+=(zsh-vi-mode)
 plugins+=(pass)
 plugins+=(azure)
 plugins+=(direnv)
 
 source $ZSH/oh-my-zsh.sh
-source <(fzf --zsh)
 
 # User configuration
 
@@ -95,9 +97,7 @@ export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 bindkey -M viins '^ ' autosuggest-accept
 
-pgrep ssh-agent > /dev/null || eval $(ssh-agent) > /dev/null
-
-alias vim="nvim"
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$UID}/ssh-agent.socket"
 
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -126,6 +126,3 @@ alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# opencode
-export PATH=/Users/dennisrye/.opencode/bin:$PATH
