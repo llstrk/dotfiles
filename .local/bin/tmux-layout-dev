@@ -18,9 +18,11 @@ tmux split-window -v -p 15 -t "$main_pane" -c "$current_path" >/dev/null
 right_pane="$(tmux split-window -h -p 30 -t "$main_pane" -c "$current_path" -P -F '#{pane_id}')"
 
 tmux respawn-pane -k -t "$main_pane" 'nvim; exec "${SHELL:-/bin/zsh}" -l'
-if command -v opencode >/dev/null 2>&1; then
+if command -v ocd >/dev/null 2>&1; then
+  tmux respawn-pane -k -t "$right_pane" 'ocd; exec "${SHELL:-/bin/zsh}" -l'
+elif command -v opencode >/dev/null 2>&1; then
   tmux respawn-pane -k -t "$right_pane" 'opencode; exec "${SHELL:-/bin/zsh}" -l'
 else
   tmux respawn-pane -k -t "$right_pane" 'exec "${SHELL:-/bin/zsh}" -l'
 fi
-tmux select-pane -t "$main_pane"
+tmux select-pane -t "$right_pane"
