@@ -18,11 +18,13 @@ entry="$(
     sort |
     fzf --prompt='pass> ' --height=100% --layout=reverse
 )"
-
 [ -z "${entry:-}" ] && exit 0
 
-first_line="$(pass show "$entry" | {
-  IFS= read -r line || true
-  printf '%s' "${line:-}"
-})"
-printf '%s' "$first_line" | cot
+first_line="$(pass show "$entry")"
+first_line="${first_line%%$'\n'*}"
+
+if [ -n "${TMUX:-}" ]; then
+  tmux set-buffer -w -- "$first_line"
+else
+  cot "$first_line"
+fi
