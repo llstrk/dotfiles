@@ -23,8 +23,16 @@ entry="$(
 first_line="$(pass show "$entry")"
 first_line="${first_line%%$'\n'*}"
 
+action="${TMUX_PASS_ACTION:-copy}"
+target_pane="${TARGET_PANE:-}"
+
 if [ -n "${TMUX:-}" ]; then
   tmux set-buffer -w -- "$first_line"
 else
   cot "$first_line"
+fi
+
+if [ "$action" = "send" ] && [ -n "${TMUX:-}" ] && [ -n "$target_pane" ]; then
+  tmux send-keys -t "$target_pane" -l -- "$first_line"
+  tmux send-keys -t "$target_pane" Enter
 fi
