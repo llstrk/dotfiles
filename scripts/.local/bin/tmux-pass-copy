@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+
+if [ ! -d "$store" ]; then
+  echo "password store not found: $store" >&2
+  exit 1
+fi
+
+entry="$(
+  find "$store" -type f -name '*.gpg' -print0 \
+    | while IFS= read -r -d '' file; do
+        rel="${file#"$store"/}"
+        printf '%s\n' "${rel%.gpg}"
+      done \
+    | sort \
+    | fzf --prompt='pass> ' --height=100% --layout=reverse
+)"
+
+[ -z "${entry:-}" ] && exit 0
+
+first_line="$(pass show "$entry" | { IFS= read -r line || true; printf '%s' "${line:-}"; })"
+printf '%s' "$first_line" | cot
+
+if [ -n "${TMUX:-}" ]; then
+  tmux display-message "Copied: $entry"
+fi
