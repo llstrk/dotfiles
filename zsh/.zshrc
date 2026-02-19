@@ -99,6 +99,13 @@ bindkey -M viins '^ ' autosuggest-accept
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$UID}/ssh-agent.socket"
 
+# Keep one ssh-agent per login session on a stable socket.
+ssh-add -l >/dev/null 2>&1
+if [[ $? -eq 2 ]]; then
+  [[ -S "$SSH_AUTH_SOCK" ]] && rm -f "$SSH_AUTH_SOCK"
+  eval "$(ssh-agent -a "$SSH_AUTH_SOCK" -s)" >/dev/null
+fi
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
