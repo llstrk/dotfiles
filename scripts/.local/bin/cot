@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+max="${OSC52_MAX:-100000}"
+
+if [ -p /dev/stdin ]; then
+  input="$(cat)"
+elif [ "$#" -gt 0 ]; then
+  input="$*"
+else
+  echo "usage: cot [text] or pipe text into cot" >&2
+  exit 1
+fi
+
+data="$(printf '%s' "$input" | base64 | tr -d '\r\n')"
+
+if [ "${#data}" -gt "$max" ]; then
+  echo "too large for OSC52 (max: $max bytes after base64)" >&2
+  exit 1
+fi
+
+if [ -n "${TMUX:-}" ]; then
+  printf '\033Ptmux;\033\033]52;c;%s\a\033\\' "$data"
+else
+  printf '\033]52;c;%s\a' "$data"
+fi
