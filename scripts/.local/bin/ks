@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+# Select a kubeconfig file using fzf and set KUBECONFIG
+# Reads from $KUBECONFIG_FOLDER or defaults to ~/.kube
+# Usage: source ks
+
+KUBE_DIR="${KUBECONFIG_FOLDER:-$HOME/.kube}"
+
+selected=$(find "$KUBE_DIR" -maxdepth 1 -name '*.yaml' -o -name '*.yml' 2>/dev/null | xargs -n1 basename | sort | fzf --prompt="Select kubeconfig: ")
+
+if [ -n "$selected" ]; then
+  export KUBECONFIG="$KUBE_DIR/$selected"
+  echo "KUBECONFIG set to $KUBECONFIG"
+else
+  echo "No kubeconfig selected"
+fi
