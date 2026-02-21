@@ -3,7 +3,7 @@
 # Reads from $KUBECONFIG_FOLDER or defaults to ~/.kube
 # Usage: source ks
 
-KUBE_DIR="${KUBECONFIG_FOLDER:-$HOME/.kube}"
+KUBE_DIR="${KUBECONFIG_DIR:-$HOME/.kube}"
 
 selected=$(find "$KUBE_DIR" -maxdepth 1 -name '*.yaml' -o -name '*.yml' 2>/dev/null | xargs -n1 basename | sort | fzf --prompt="Select kubeconfig: ")
 
