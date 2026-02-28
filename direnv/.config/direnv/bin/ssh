@@ -1,0 +1,8 @@
+#!/bin/bash
+for arg in "$@"; do
+  if [[ "$arg" == "-F" ]]; then
+    exec /usr/bin/ssh "$@"
+  fi
+done
+
+exec /usr/bin/ssh -F "$SSH_CONFIG_FILE" "$@"
