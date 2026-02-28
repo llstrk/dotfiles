@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.local/bin:$PATH"
 export ZVM_VI_EDITOR="nvim"
+export EDITOR="nvim"
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 bindkey -M viins '^ ' autosuggest-accept
