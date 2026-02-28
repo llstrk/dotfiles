@@ -143,5 +143,24 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ks='source ks'
 
+_check_project_isolation() {
+  local code_root="$HOME/code"
+
+  [[ "$PWD" != "$code_root"/* ]] && return
+
+  local relative="${PWD#$code_root/}"
+  local project="${relative%%/*}"
+
+  [[ -z "$project" || "$project" == .* ]] && return
+
+  if [[ -z "${_PROJECT_ISOLATED:-}" ]]; then
+    print -P "%F{yellow}WARNING: No project isolation active for '$project'%f"
+    print -P "%F{yellow}  Create ~/code/$project/.envrc with: use project $project%f"
+  fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _check_project_isolation
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
