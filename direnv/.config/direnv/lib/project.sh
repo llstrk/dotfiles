@@ -12,6 +12,9 @@ use_project() {
   kubeconfigs=$(find "$local_dir/.kube" -maxdepth 1 \( -name "*.yaml" -o -name "*.yml" -o -name "config" \) 2>/dev/null | paste -sd: -)
   export KUBECONFIG="${kubeconfigs:-$local_dir/.kube/config}"
 
+  mkdir -p "$local_dir"
+  export HISTFILE="$local_dir/.zsh_history"
+
   PATH_add "$HOME/.config/direnv/bin"
   PATH_add "$local_dir"
 

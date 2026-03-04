@@ -16,23 +16,26 @@ entry="$(
       printf '%s\n' "${rel%.gpg}"
     done |
     sort |
-    fzf --prompt='pass> ' --height=100% --layout=reverse
+    fzf --prompt='pass> ' --height=100% --layout=reverse || true
 )"
-[ -z "${entry:-}" ] && exit 0
+[[ -z "$entry" ]] && exit 0
 
-first_line="$(pass show "$entry")"
-first_line="${first_line%%$'\n'*}"
+# Only get first line, never load full entry into memory
+first_line="$(pass show "$entry" | head -n1)"
 
 action="${TMUX_PASS_ACTION:-copy}"
 target_pane="${TARGET_PANE:-}"
 
 if [ -n "${TMUX:-}" ]; then
-  tmux set-buffer -w -- "$first_line"
+  # Pipe via stdin - password never appears in process args
+  printf '%s' "$first_line" | tmux load-buffer -w -
 else
-  cot "$first_line"
+  printf '%s' "$first_line" | cot
 fi
 
 if [ "$action" = "send" ] && [ -n "${TMUX:-}" ] && [ -n "$target_pane" ]; then
-  tmux send-keys -t "$target_pane" -l -- "$first_line"
+  # Use paste-buffer instead of send-keys - password not in process table
+  printf '%s' "$first_line" | tmux load-buffer -w -
+  tmux paste-buffer -t "$target_pane" -d  # -d deletes buffer after paste
   tmux send-keys -t "$target_pane" Enter
 fi

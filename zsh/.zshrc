@@ -159,8 +159,22 @@ _check_project_isolation() {
   fi
 }
 
+_direnv_history_switch() {
+  # After direnv runs, if HISTFILE has changed, switch to it dynamically
+  local default_histfile="${ZDOTDIR:-$HOME}/.zsh_history"
+  local current="${HISTFILE:-$default_histfile}"
+
+  # fc -p switches the active history file for the current shell
+  if [[ "$current" != "$default_histfile" && -n "$current" ]]; then
+    fc -p "$current"
+  else
+    fc -P  # pop back to default history file when leaving a project
+  fi
+}
+
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _check_project_isolation
+add-zsh-hook chpwd _direnv_history_switch
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
